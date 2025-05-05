@@ -1,92 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 215 28% 17%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 20% 12%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 45 93% 47%; /* Gold */
+    --primary-foreground: 222 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 210 14% 39%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 210 20% 80%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 45 70% 50%; /* Lighter gold */
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 68% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 215 16% 47%;
+    --input: 215 16% 47%;
+    --ring: 45 93% 47%; /* Gold */
+
+    --radius: 0.5rem;
   }
 }
 
@@ -95,7 +44,70 @@
     @apply border-border;
   }
 
+  html {
+    @apply antialiased;
+  }
+
   body {
     @apply bg-background text-foreground;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .screenplay {
+    @apply font-courier tracking-tight leading-relaxed text-screenplay-text;
+  }
+
+  .screenplay-title {
+    @apply text-center font-bold my-8 text-xl text-screenplay-heading;
+  }
+
+  .screenplay-scene-heading {
+    @apply font-bold text-screenplay-heading mt-6 mb-2;
+  }
+
+  .screenplay-action {
+    @apply text-screenplay-action my-4;
+  }
+
+  .screenplay-character {
+    @apply text-screenplay-character font-bold text-center mt-4 mb-0;
+  }
+
+  .screenplay-dialog {
+    @apply text-screenplay-dialog text-center max-w-md mx-auto mb-4;
+  }
+
+  .screenplay-parenthetical {
+    @apply text-screenplay-parenthetical italic text-center max-w-sm mx-auto my-1;
+  }
+
+  .screenplay-transition {
+    @apply text-screenplay-transition text-right font-bold my-4;
+  }
+
+  .paper-bg {
+    @apply bg-screenplay-paper rounded-md shadow-xl;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  .file-input-wrapper {
+    @apply relative cursor-pointer overflow-hidden inline-flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .file-input {
+    @apply cursor-pointer opacity-0 absolute inset-0 w-full h-full;
+  }
+
+  .filmstrip {
+    @apply relative before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-6 before:bg-black before:bg-opacity-10;
+    @apply after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-6 after:bg-black after:bg-opacity-10;
+    background-image: repeating-linear-gradient(to right, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 12px, transparent 12px, transparent 24px);
+  }
+
+  .typing-cursor {
+    @apply border-r-2 border-black animate-blink;
   }
 }
